@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit de Ciência</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="simulado.css">
+</head>
+<body>
+  <div class="pagina">
+
+    <header class="topo">
+      <span class="marca">Kit de Ciência</span>
+      <nav class="menu">
+        <button class="aba activa" data-secao="inicio">Início</button>
+        <button class="aba" data-secao="quiz">Quiz</button>
+        <button class="aba" data-secao="pomodoro">Pomodoro</button>
+        <button class="aba" data-secao="tecnicas">Técnicas</button>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- INÍCIO -->
+      <section id="inicio" class="secao visivel">
+        <div class="hero">
+          <div class="hero-texto">
+            <p class="etiqueta">V Fórum Provincial de Investigação Científica e Extensão</p>
+            <h1>Estuda mais.<br>Aprende melhor.</h1>
+            <p class="descricao">
+              Quiz por disciplina, método Pomodoro e técnicas de estudo
+              para estudantes do ensino geral.
+            </p>
+            <button class="botao" data-secao="quiz">Começar o quiz ↗</button>
+          </div>
+          <div class="forma"></div>
+        </div>
+
+        <div class="grelha">
+          <button class="cartao cartao-azul" data-secao="quiz">
+            <h3>Quiz</h3>
+            <p>Escolhe as disciplinas, vê o teu desempenho e consulta o histórico.</p>
+          </button>
+
+          <button class="cartao cartao-escuro" data-secao="pomodoro">
+            <h3>Pomodoro</h3>
+            <p>Ciclos de foco e pausa para estudares com concentração.</p>
+          </button>
+
+          <button class="cartao cartao-claro" data-secao="tecnicas">
+            <h3>Técnicas de estudo</h3>
+            <p>Métodos simples para aprenderes e memorizares melhor.</p>
+          </button>
+
+          <div class="cartao cartao-escuro cartao-fixo">
+            <h3>Disciplinas</h3>
+            <div class="fichas">
+              <span>Matemática</span>
+              <span>Física</span>
+              <span>Química</span>
+              <span>Biologia</span>
+              <span>Filosofia</span>
+              <span>Antropologia Cultural de Moçambique</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section id="quiz" class="secao">
+        <h2>Quiz</h2>
+
+        <!-- Escolha das disciplinas -->
+        <div id="quiz-escolha" class="quiz-painel">
+          <h3>Escolhe as disciplinas</h3>
+          <div id="quiz-disciplinas" class="fichas fichas-escolha"></div>
+
+          <label class="campo">
+            Número de perguntas
+            <select id="quiz-numero">
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </label>
+
+          <p id="quiz-aviso" class="aviso"></p>
+
+          <div class="controlos controlos-esq">
+            <button class="botao" id="btn-comecar">Começar</button>
+            <button class="botao botao-contorno" id="btn-historico">Ver histórico</button>
+          </div>
+        </div>
+
+        <!-- Pergunta -->
+        <div id="quiz-pergunta" class="quiz-painel" hidden>
+          <p class="progresso" id="quiz-progresso"></p>
+          <div class="barra"><div class="barra-cheia" id="quiz-barra"></div></div>
+          <p class="etiqueta" id="quiz-disciplina"></p>
+          <h3 id="quiz-texto"></h3>
+          <div id="quiz-opcoes" class="opcoes"></div>
+          <p id="quiz-feedback" class="feedback"></p>
+          <button class="botao" id="btn-seguinte" hidden>Seguinte</button>
+        </div>
+
+        <!-- Resultado -->
+        <div id="quiz-resultado" class="quiz-painel" hidden>
+          <h3>Resultado</h3>
+          <div class="pontuacao" id="res-pontuacao"></div>
+          <p class="suave" id="res-mensagem"></p>
+
+          <h4 class="subtitulo">Desempenho por disciplina</h4>
+          <div id="res-disciplinas"></div>
+
+          <div class="controlos controlos-esq">
+            <button class="botao" id="btn-refazer-erros">Refazer as que errei</button>
+            <button class="botao botao-contorno" id="btn-novo">Novo quiz</button>
+            <button class="botao botao-contorno" id="btn-res-historico">Ver histórico</button>
+          </div>
+        </div>
+
+        <!-- Histórico -->
+        <div id="quiz-historico" class="quiz-painel" hidden>
+          <h3>Histórico</h3>
+
+          <h4 class="subtitulo">Desempenho acumulado</h4>
+          <div id="hist-resumo"></div>
+
+          <h4 class="subtitulo">Sessões (clica para ver as respostas)</h4>
+          <div id="hist-lista"></div>
+
+          <div class="controlos controlos-esq">
+            <button class="botao botao-contorno" id="btn-voltar">Voltar</button>
+            <button class="botao botao-contorno" id="btn-limpar">Limpar histórico</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- POMODORO -->
+      <section id="pomodoro" class="secao">
+        <h2>Pomodoro</h2>
+
+        <div class="pomodoro">
+          <div class="modos">
+            <button class="modo activo" data-modo="foco">Foco · 25 min</button>
+            <button class="modo" data-modo="curta">Pausa curta · 5 min</button>
+            <button class="modo" data-modo="longa">Pausa longa · 15 min</button>
+          </div>
+
+          <div class="relogio" id="relogio">25:00</div>
+
+          <div class="controlos">
+            <button class="botao" id="btn-iniciar">Iniciar</button>
+            <button class="botao botao-contorno" id="btn-reiniciar">Reiniciar</button>
+          </div>
+
+          <p class="estado" id="estado-pomodoro">Pronto para focar.</p>
+
+          <div class="estatisticas">
+            <div class="cartao">
+              <h3 id="ciclos-hoje">0</h3>
+              <p>Ciclos de foco hoje</p>
+            </div>
+            <div class="cartao">
+              <h3 id="minutos-hoje">0</h3>
+              <p>Minutos de estudo hoje</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tecnicas" class="secao">
+        <h2>Técnicas de estudo</h2>
+
+        <div class="grelha">
+          <div class="cartao cartao-azul">
+            <h3>Pomodoro</h3>
+            <p>Estuda em blocos curtos, com pausas.</p>
+            <ul>
+              <li>25 minutos de foco total, sem telemóvel</li>
+              <li>5 minutos de pausa</li>
+              <li>Depois de 4 ciclos, uma pausa longa</li>
+            </ul>
+          </div>
+
+          <div class="cartao cartao-escuro">
+            <h3>Recordação activa</h3>
+            <p>Em vez de reler, tenta lembrar-te.</p>
+            <ul>
+              <li>Fecha o livro e escreve o que recordas</li>
+              <li>Confere e corrige</li>
+              <li>Dá mais atenção ao que falhaste</li>
+            </ul>
+          </div>
+
+          <div class="cartao cartao-claro">
+            <h3>Repetição espaçada</h3>
+            <p>Revê a matéria em intervalos cada vez maiores.</p>
+            <ul>
+              <li>Revê no dia seguinte</li>
+              <li>Volta a rever ao fim de alguns dias</li>
+              <li>Depois, ao fim de uma ou mais semanas</li>
+            </ul>
+          </div>
+
+          <div class="cartao cartao-escuro">
+            <h3>Técnica de Feynman</h3>
+            <p>Explica o assunto como se ensinasses um colega.</p>
+            <ul>
+              <li>Escolhe um tema</li>
+              <li>Explica-o com palavras simples</li>
+              <li>Onde travares, volta ao livro</li>
+            </ul>
+          </div>
+
+          <div class="cartao cartao-escuro">
+            <h3>Mapas mentais</h3>
+            <p>Organiza a matéria de forma visual.</p>
+            <ul>
+              <li>O tema no centro da folha</li>
+              <li>Um ramo para cada ideia principal</li>
+              <li>Palavras-chave e pequenos desenhos</li>
+            </ul>
+          </div>
+
+          <div class="cartao cartao-azul">
+            <h3>Exercícios e testes</h3>
+            <p>Praticar ajuda a fixar a matéria.</p>
+            <ul>
+              <li>Resolve exercícios antes de ver a solução</li>
+              <li>Treina com exames anteriores</li>
+              <li>Usa o Quiz para te avaliares</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="controlos controlos-esq">
+          <button class="botao" data-secao="pomodoro">Praticar com o Pomodoro</button>
+          <button class="botao botao-contorno" data-secao="quiz">Testar-me no Quiz</button>
+        </div>
+      </section>      <!-- TÉCNICAS -->
+
+    </main>
+
+    <footer class="rodape">
+      <p>Kit de Ciência · Estudante de Informática, Universidade Licungo</p>
+    </footer>
+
+  </div>
+
+    <script src="perguntas.js"></script>
+  <script src="simulado-dados.js"></script>
+  <script src="simulado.js"></script>
+  <script src="script.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

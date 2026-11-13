@@ -1,0 +1,94 @@
+/* ===== Simulado ===== */
+.sim-grupo {
+  margin-bottom: 16px;
+}
+
+.sim-grupo-nome {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#sim-config h3 {
+  margin-top: 8px;
+}
+
+.sim-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.sim-relogio {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: #0d0d0d;
+  border: 1px solid #3a3a3a;
+  border-radius: 16px;
+  padding: 6px 18px;
+}
+
+.sim-relogio.sim-pouco {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.sim-barra-tempo {
+  margin-bottom: 20px;
+}
+
+#sim-texto {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+#sim-opcoes .opcao.marcada {
+  border-color: var(--azul);
+  background: rgba(29, 77, 255, 0.2);
+}
+
+.sim-grelha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sim-num {
+  width: 42px;
+  height: 42px;
+  text-align: center;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.sim-num.resp {
+  background: var(--azul);
+  border-color: var(--azul);
+}
+
+.sim-num.atual {
+  outline: 2px solid #ffffff;
+}
+
+#sim-nota {
+  font-size: clamp(3rem, 12vw, 5rem);
+  font-weight: 700;
+  color: var(--azul);
+  line-height: 1.1;
+}
+
+.botao:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .sim-relogio {
+    font-size: 1.5rem;
+    padding: 4px 12px;
+  }
+}
